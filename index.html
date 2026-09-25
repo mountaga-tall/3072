@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#08111f">
+  <meta name="description" content="3072 — jeu de fusion cérébral ultra-rapide basé sur la progression 3, 6, 12, 24...">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>3072 — Think Fast. Merge Faster.</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="brand-mark" aria-hidden="true">3</div>
+        <div>
+          <h1>3072</h1>
+          <p>THINK FAST. MERGE FASTER.</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" id="soundBtn" type="button" aria-pressed="true" title="Activer ou couper le son">🔊</button>
+        <button class="icon-btn" id="helpBtn" type="button" title="Voir les règles">?</button>
+      </div>
+    </header>
+
+    <section class="hud" aria-label="Statistiques de la partie">
+      <div class="stat-card"><span class="stat-label">SCORE</span><strong id="score">0</strong></div>
+      <div class="stat-card"><span class="stat-label">MEILLEUR</span><strong id="best">0</strong></div>
+      <div class="stat-card timer-card" id="timerCard"><span class="stat-label">TEMPS / COUP</span><strong id="timer">4.0</strong><span class="sec">s</span></div>
+    </section>
+
+    <section class="challenge-row" aria-live="polite">
+      <div class="progress-wrap">
+        <div class="progress-meta"><span>OBJECTIF</span><strong>3072</strong></div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+      <div class="combo-badge" id="comboBadge">COMBO ×1</div>
+    </section>
+
+    <section class="board-wrap">
+      <div class="board" id="board" role="grid" aria-label="Grille de jeu 4 par 4"></div>
+      <div class="board-shine" aria-hidden="true"></div>
+      <div class="effect-layer" id="effectLayer" aria-hidden="true"></div>
+      <div class="message-layer" id="messageLayer" aria-live="assertive"></div>
+    </section>
+
+    <section class="controls">
+      <button class="primary-btn" id="restartBtn" type="button">NOUVELLE PARTIE</button>
+      <div class="hint"><span>←</span><span>↑</span><span>↓</span><span>→</span> ou glisse sur l'écran</div>
+    </section>
+
+    <footer class="footer-line"><span>3072</span><span>•</span><span>3 → 6 → 12 → 24 → … → 3072</span></footer>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Fermer">×</button>
+      <div class="modal-icon">3</div>
+      <h2 id="modalTitle">Comment jouer</h2>
+      <p>Glisse dans une direction pour déplacer toutes les tuiles.</p>
+      <p>Deux tuiles identiques fusionnent : <strong>3 + 3 = 6</strong>, puis <strong>6 + 6 = 12</strong>, et ainsi de suite.</p>
+      <p>Tu disposes de <strong>4 secondes par coup</strong>. Chaque mouvement réussi recharge le chrono.</p>
+      <p>Atteins <strong>3072</strong>, construis ton meilleur score et garde la grille en mouvement.</p>
+      <button class="primary-btn" id="modalStart" type="button">JOUER</button>
+    </section>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
